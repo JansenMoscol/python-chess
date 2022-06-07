@@ -1,5 +1,4 @@
 from flask import Flask
-from stockfish import Stockfish
 from flask import jsonify
 from flask_cors import CORS 
 from flask import request
@@ -12,23 +11,6 @@ import json
 
 app = Flask(__name__)
 CORS(app)
-
-@app.route("/", methods=['POST'])
-def hello_world():
-
-    body = request.get_json()
-
-    stockfish = Stockfish(path="C:\\Users\\jmoscolr\\Downloads\\stockfish_15_win_x64\\stockfish_15_win_x64\\stockfish_15_x64.exe")
-
-    stockfish.set_fen_position(body['fen'])
-
-    # bestmove = jsonify(stockfish.get_top_moves(3))
-
-    bestmove = stockfish.get_best_move()
-
-    return jsonify({
-        "best_move": bestmove
-    })
 
 def _top_seed_colour_selection_fn():
     return Colour.black
