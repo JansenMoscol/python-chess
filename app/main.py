@@ -5,9 +5,7 @@ from flask import request
 
 from swissdutch.dutch import DutchPairingEngine
 from swissdutch.constants import FideTitle, Colour, FloatStatus
-from swissdutch.player import Player
-
-import json
+from app.utils import Player
 
 app = Flask(__name__)
 CORS(app)
