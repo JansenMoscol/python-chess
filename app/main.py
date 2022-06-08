@@ -20,7 +20,7 @@ def hello_world():
 
     BASE_DIR = dirname(dirname(abspath(__file__)))
 
-    stockfish = Stockfish(path=join(BASE_DIR, 'stockfish_15_x64111'))
+    stockfish = Stockfish(path=join(BASE_DIR, 'stockfish_15_x64'))
 
     stockfish.set_fen_position(body['fen'])
 
