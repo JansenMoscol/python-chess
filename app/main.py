@@ -7,8 +7,27 @@ from swissdutch.dutch import DutchPairingEngine
 from swissdutch.constants import FideTitle, Colour, FloatStatus
 from app.utils import Player
 
+from stockfish import Stockfish
+
 app = Flask(__name__)
 CORS(app)
+
+@app.route("/stockfish", methods=['POST'])
+def hello_world():
+
+    body = request.get_json()
+
+    stockfish = Stockfish(path="./stockfish_15_x64")
+
+    stockfish.set_fen_position(body['fen'])
+
+    # bestmove = jsonify(stockfish.get_top_moves(3))
+
+    bestmove = stockfish.get_best_move()
+
+    return jsonify({
+        "best_move": bestmove
+    })
 
 def _top_seed_colour_selection_fn():
     return Colour.black
