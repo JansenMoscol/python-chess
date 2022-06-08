@@ -8,6 +8,7 @@ from swissdutch.constants import FideTitle, Colour, FloatStatus
 from app.utils import Player
 
 from stockfish import Stockfish
+from os.path import abspath, dirname, join
 
 app = Flask(__name__)
 CORS(app)
@@ -17,7 +18,9 @@ def hello_world():
 
     body = request.get_json()
 
-    stockfish = Stockfish(path="./stockfish_15_x64")
+    BASE_DIR = dirname(dirname(abspath(__file__)))
+
+    stockfish = Stockfish(path=join(BASE_DIR, 'stockfish_15_x64'))
 
     stockfish.set_fen_position(body['fen'])
 
