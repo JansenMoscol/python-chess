@@ -51,6 +51,7 @@ def swiss():
                 score=_player['score'],
                 opponents=_player['opponents'],
                 colour_hist=_player['colors'],
+                float_status=_player['float_status'],
                 player_id=_player['player_id']))
 
     result_players = engine.pair_round(body["round"], input_players)
