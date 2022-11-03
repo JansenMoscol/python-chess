@@ -13,15 +13,12 @@ from os.path import abspath, dirname, join
 app = Flask(__name__)
 CORS(app)
 
-@app.route("/stockfish", methods=['POST'])
+@app.route("/", methods=['POST'])
 def hello_world():
 
     body = request.get_json()
 
-    BASE_DIR = dirname(dirname(abspath(__file__)))
-
-    # stockfish = Stockfish(path=join(BASE_DIR, 'stockfish_15_x64'))
-    stockfish = Stockfish(path='./stockfish_15_x64')
+    stockfish = Stockfish(path="C:\\Users\\jmoscolr\\Downloads\\stockfish_15_win_x64\\stockfish_15_win_x64\\stockfish_15_x64.exe")
 
     stockfish.set_fen_position(body['fen'])
 
